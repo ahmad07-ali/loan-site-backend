@@ -7,9 +7,10 @@ const app = express(); // ✅ declared at the top
 
 // Middleware
 app.use(cors({
-  origin: 'http://localhost:5173', // change to your Vercel frontend when live
-  credentials: true
+  origin: ['https://your-frontend.vercel.app', 'https://loan-backend-production.up.railway.app'],
+  credentials: true,
 }));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
