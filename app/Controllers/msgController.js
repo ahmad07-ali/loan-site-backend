@@ -1,12 +1,13 @@
 const msgModel = require('../Models/msgModel');
 const nodemailer = require('nodemailer');
+require('dotenv').config(); // ✅ Load .env variables
 
-// ✅ Use environment variables for security (recommended)
+// ✅ Use environment variables for Gmail credentials
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'aliahmad.tech7@gmail.com', // ✅ Your Gmail
-    pass: 'dmqxcofefzeomlsw'           // ✅ App password (no spaces)
+    user: process.env.EMAIL_USER,  // FROM .env
+    pass: process.env.EMAIL_PASS   // FROM .env (App password)
   }
 });
 
@@ -24,8 +25,8 @@ module.exports = {
 
       // Email content
       const mailOptions = {
-        from: '"Loan Contact Form" <aliahmad.tech7@gmail.com>', // ✅ Must match transporter user
-        to: 'aliahmad.tech7@gmail.com',
+        from: `"Loan Contact Form" <${process.env.EMAIL_USER}>`, // dynamic sender
+        to: process.env.EMAIL_USER,
         subject: 'New Contact Message',
         html: `
           <h3>Contact Message Received</h3>
@@ -50,12 +51,11 @@ module.exports = {
       res.json('Your message has been saved successfully!');
 
     } catch (err) {
-      console.error('🔥 Error saving message or sending email:', err); // 👈 detailed
+      console.error('🔥 Error saving message or sending email:', err);
       res.status(500).json({
         error: err.message || 'Something went wrong while saving your message.'
       });
     }
-    
   },
 
   // ✅ Fetch all messages
