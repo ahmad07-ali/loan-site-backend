@@ -7,7 +7,7 @@ const app = express(); // ✅ declared at the top
 
 // Middleware
 app.use(cors({
-  origin: ['http://newloan-site.vercel.app', 'https://loan-backend-production.up.railway.app'],
+  origin: ['http://localhost:5173', 'http://newloan-site.vercel.app', 'http://quickcashpoint.com'],
   credentials: true,
 }));
 

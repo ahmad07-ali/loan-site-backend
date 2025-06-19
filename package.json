@@ -8,5 +8,10 @@
     "mongoose": "^8.9.5",
     "nodemailer": "^7.0.3",
     "react-datepicker": "^8.4.0"
-  }
+  },
+  "scripts": {
+  "start": "node server.js"
 }
+}
+
+
