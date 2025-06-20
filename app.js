@@ -4,6 +4,8 @@ const cors = require('cors');
 require('./database/connection'); // must successfully connect MongoDB
 
 const app = express(); // ✅ declared at the top
+require('dotenv').config(); // Must be at top
+
 
 // Middleware
 app.use(cors({
