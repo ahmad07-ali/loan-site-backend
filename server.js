@@ -2,7 +2,7 @@ const app = require('./app');
 const http = require('http');
 
 // Use port 80 for cPanel (or .env fallback)
-const PORT = process.env.PORT || 80; // cPanel prefers port 80/443
+const PORT = process.env.PORT || 4000; // cPanel prefers port 80/443
 
 const server = http.createServer(app);
 
